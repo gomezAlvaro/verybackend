@@ -2,12 +2,11 @@ package com.verychic.inventory;
 
 public final class ItemWrapper {
 	private Item item;
-	private QualityItem qualityItem;
-	private QualityItemFactory qualityItemFactory = new QualityItemFactory();
+	private ItemQuality itemQuality;
 
 	public ItemWrapper(Item item){
 	    this.item =  item;
-	    qualityItem = qualityItemFactory.getQualityItem(item);
+	    this.itemQuality = ItemQualityFactory.getQualityItem(item);
     }
 
 	public Item getItem() {
@@ -18,11 +17,11 @@ public final class ItemWrapper {
 		this.item = item;
 	}
 
-	public QualityItem getQualityItem() {
-		return qualityItem;
+	public ItemQuality getItemQuality() {
+		return itemQuality;
 	}
 
-	public void setQualityItem(QualityItem qualityItem) {
-		this.qualityItem = qualityItem;
+	public void setItemQuality(ItemQuality itemQuality) {
+		this.itemQuality = itemQuality;
 	}
 }

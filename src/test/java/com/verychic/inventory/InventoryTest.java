@@ -7,7 +7,6 @@ import java.util.Arrays;
 import org.junit.Test;
 
 public class InventoryTest {
-    //TODO where is the test to check quality -2 if sellin passed?
 
 	@Test
     public void should_never_change_quailty_of_Millenary_Honey() throws Exception {
@@ -33,53 +32,115 @@ public class InventoryTest {
         assertEquals(0, millenaryHoney.getSellIn());
     }
 
-//    @Test
-//    public void should_lower_the_sellIn_by_one_for_ordinary_items() throws Exception {
-//
-//        Item ordinaryItem = new Item("Ordinary food", 10, 20);
-//
-//        Inventory sut = new Inventory((Item[]) Arrays.asList(ordinaryItem).toArray());
-//
-//        sut.updateQuality();
-//
-//        assertEquals(9, ordinaryItem.getSellIn());
-//    }
-//
-//    @Test
-//    public void should_lower_the_quality_by_one_for_ordinary_items() throws Exception {
-//
-//        Item ordinaryItem = new Item("Ordinary food", 10, 20);
-//
-//        Inventory sut = new Inventory((Item[]) Arrays.asList(ordinaryItem).toArray());
-//
-//        sut.updateQuality();
-//
-//        assertEquals(19, ordinaryItem.getQuality());
-//    }
-//
-//    @Test
-//    public void should_not_lower_the_quality_below_zero() throws Exception {
-//
-//        Item ordinaryItem = new Item("Ordinary food", 10, 0);
-//
-//        Inventory sut = new Inventory((Item[]) Arrays.asList(ordinaryItem).toArray());
-//
-//        sut.updateQuality();
-//
-//        assertEquals(0, ordinaryItem.getQuality());
-//    }
-//
-//    @Test
-//    public void should_lower_the_quality_twice_as_fast_once_the_sell_in_date_has_passed() throws Exception {
-//
-//    	Item ordinaryItem = new Item("Ordinary food", -1, 25);
-//
-//        Inventory sut = new Inventory((Item[]) Arrays.asList(ordinaryItem).toArray());
-//
-//        sut.updateQuality();
-//
-//        assertEquals(23, ordinaryItem.getQuality());
-//    }
+    @Test
+    public void should_lower_the_sellIn_by_one_for_ordinary_items() throws Exception {
+
+        Item ordinaryItem = new Item("Ordinary food", 10, 20);
+
+        Inventory sut = new Inventory((Item[]) Arrays.asList(ordinaryItem).toArray());
+
+        sut.updateQuality();
+
+        assertEquals(9, ordinaryItem.getSellIn());
+    }
+
+    @Test
+    public void should_lower_the_quality_by_one_for_ordinary_items() throws Exception {
+
+        Item ordinaryItem = new Item("Ordinary food", 10, 20);
+
+        Inventory sut = new Inventory((Item[]) Arrays.asList(ordinaryItem).toArray());
+
+        sut.updateQuality();
+
+        assertEquals(19, ordinaryItem.getQuality());
+    }
+
+    @Test
+    public void should_not_lower_the_quality_below_zero() throws Exception {
+
+        Item ordinaryItem = new Item("Ordinary food", 10, 0);
+
+        Inventory sut = new Inventory((Item[]) Arrays.asList(ordinaryItem).toArray());
+
+        sut.updateQuality();
+
+        assertEquals(0, ordinaryItem.getQuality());
+    }
+
+    @Test
+    public void should_lower_the_quality_twice_as_fast_once_the_sell_in_date_has_passed() throws Exception {
+
+    	Item ordinaryItem = new Item("Ordinary food", -1, 25);
+
+        Inventory sut = new Inventory((Item[]) Arrays.asList(ordinaryItem).toArray());
+
+        sut.updateQuality();
+
+        assertEquals(23, ordinaryItem.getQuality());
+    }
+
+    @Test
+    public void should_lower_the_sellIn_by_one_for_fresh_items() throws Exception {
+
+        Item ordinaryItem = new Item("Fresh food", 10, 20);
+
+        Inventory sut = new Inventory((Item[]) Arrays.asList(ordinaryItem).toArray());
+
+        sut.updateQuality();
+
+        assertEquals(9, ordinaryItem.getSellIn());
+    }
+
+    @Test
+    public void should_lower_the_quality_by_two_for_fresh_items() throws Exception {
+
+        Item ordinaryItem = new Item("Fresh food", 10, 20);
+
+        Inventory sut = new Inventory((Item[]) Arrays.asList(ordinaryItem).toArray());
+
+        sut.updateQuality();
+
+        assertEquals(18, ordinaryItem.getQuality());
+    }
+
+    @Test
+    public void should_not_lower_the_quality_of_fresh_items_below_zero() throws Exception {
+
+        Item ordinaryItem = new Item("Fresh food", 10, 0);
+
+        Inventory sut = new Inventory((Item[]) Arrays.asList(ordinaryItem).toArray());
+
+        sut.updateQuality();
+
+        assertEquals(0, ordinaryItem.getQuality());
+    }
+
+
+    @Test
+    public void should_lower_the_quality_of_fresh_items_to_zero() throws Exception {
+
+        Item ordinaryItem = new Item("Fresh food", -1, 1);
+
+        Inventory sut = new Inventory((Item[]) Arrays.asList(ordinaryItem).toArray());
+
+        sut.updateQuality();
+
+        assertEquals(0, ordinaryItem.getQuality());
+    }
+
+    @Test
+    public void should_lower_the_quality_twice_as_fast_of_fresh_items_once_the_sell_in_date_has_passed() throws Exception {
+
+        Item ordinaryItem = new Item("Fresh food", -1, 25);
+
+        Inventory sut = new Inventory((Item[]) Arrays.asList(ordinaryItem).toArray());
+
+        sut.updateQuality();
+
+        assertEquals(21, ordinaryItem.getQuality());
+    }
+
 
     @Test
     public void should_increase_the_quality_of_aged_cheese_as_it_gets_older() throws Exception {

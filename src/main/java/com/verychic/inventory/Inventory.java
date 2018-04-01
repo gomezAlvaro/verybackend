@@ -1,6 +1,5 @@
 package com.verychic.inventory;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -27,62 +26,15 @@ public class Inventory {
     }
 
     public void updateQuality() {
-        //get wrappers that will contain the updateQuality code for each item type
-        List<ItemWrapper> itemWrapperList = Arrays.stream(items).map(ItemWrapper::new).collect(Collectors.toList());
-        //update the quality of each item
-        itemWrapperList.forEach(itemWrapper -> itemWrapper.getQualityItem().updateQuality(itemWrapper.getItem()));
+        List<ItemWrapper> itemWrapperList = getItemWrapperList();
+        updateQuality(itemWrapperList);
+    }
 
-//
-//        for (int i = 0; i < items.length; i++) {
-//            if (items[i].getName() != "Aged Cheese"
-//                    && items[i].getName() != "VIP special event passes") {
-//                if (items[i].getQuality() > 0) {
-//                    if (items[i].getName() != "Millenary Honey") {
-//                        items[i].setQuality(items[i].getQuality() - 1);
-//                    }
-//                }
-//            } else {
-//                if (items[i].getQuality() < 50) {
-//                    items[i].setQuality(items[i].getQuality() + 1);
-//
-//                    if (items[i].getName() == "VIP special event passes") {
-//                        if (items[i].getSellIn() < 11) {
-//                            if (items[i].getQuality() < 50) {
-//                                items[i].setQuality(items[i].getQuality() + 1);
-//                            }
-//                        }
-//
-//                        if (items[i].getSellIn() < 6) {
-//                            if (items[i].getQuality() < 50) {
-//                                items[i].setQuality(items[i].getQuality() + 1);
-//                            }
-//                        }
-//                    }
-//                }
-//            }
-//
-//            if (items[i].getName() != "Millenary Honey") {
-//                items[i].setSellIn(items[i].getSellIn() - 1);
-//            }
-//
-//            if (items[i].getSellIn() < 0) {
-//                if (items[i].getName() != "Aged Cheese") {
-//                    if (items[i].getName() != "VIP special event passes") {
-//                        if (items[i].getQuality() > 0) {
-//                            if (items[i].getName() != "Millenary Honey") {
-//                                items[i].setQuality(items[i].getQuality() - 1);
-//                            }
-//                        }
-//                    } else {
-//                        items[i].setQuality(items[i].getQuality()
-//                                - items[i].getQuality());
-//                    }
-//                } else {
-//                    if (items[i].getQuality() < 50) {
-//                        items[i].setQuality(items[i].getQuality() + 1);
-//                    }
-//                }
-//            }
-//        }
+    private List<ItemWrapper> getItemWrapperList(){
+        return Arrays.stream(items).map(ItemWrapper::new).collect(Collectors.toList());
+    }
+
+    private void updateQuality(List<ItemWrapper> itemWrapperList) {
+        itemWrapperList.forEach(itemWrapper -> itemWrapper.getItemQuality().updateQuality(itemWrapper.getItem()));
     }
 }
